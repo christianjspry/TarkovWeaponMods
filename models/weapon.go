@@ -22,32 +22,3 @@ type Weapon struct {
 func (weapon *Weapon) TableName() string {
     return "public.Weapons"
 }
-
-type WeaponType struct {
-    gorm.Model
-    WeaponTypeID    uint    `gorm:"primaryKey"`
-    Name            string
-}
-func (weaponType *WeaponType) TableName() string {
-    return "public.WeaponTypes"
-}
-
-type TypeOfFire struct {
-    gorm.Model
-    TypeOfFireID    uint    `gorm:"primaryKey"`
-    SingleFire      bool 
-    FullAuto        bool
-    BurstFire       bool
-}
-func (typeOfFire *TypeOfFire) TableName() string {
-    return "public.TypesOfFire"
-}
-
-type Caliber struct {
-    gorm.Model
-    CaliberID   uint    `gorm:"primaryKey"` 
-    Name        string
-}
-func (caliber *Caliber) TableName() string {
-    return "public.Calibers"
-}
