@@ -1,4 +1,4 @@
-module github.com/christianjspry/TarkovWeaponMods
+module TarkovWeaponMods
 
 go 1.20
 
