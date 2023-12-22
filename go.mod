@@ -1,4 +1,4 @@
-module go-web-api
+module github.com/christianjspry/TarkovWeaponMods
 
 go 1.20
 
