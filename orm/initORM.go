@@ -4,6 +4,7 @@ import (
     "fmt"
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
+    mods "TarkovWeaponMods/models/weaponPartsAndMods"
 )
 
 const (
@@ -34,4 +35,17 @@ func ConnectDB() (db *gorm.DB) {
     
     //db.AutoMigrate(&models.TypeOfFire{})
     return
+}
+
+func InitORM() {
+    db := ConnectDB()
+
+    db.AutoMigrate(&mods.Foregrip{})
+
+    // TODO: There has to be a better way than this
+    hasTable := db.Migrator().HasTable(&mods.Foregrip{})
+    fmt.Println(hasTable)
+
+    db.AutoMigrate(&mods.Foregrip{})
+
 }

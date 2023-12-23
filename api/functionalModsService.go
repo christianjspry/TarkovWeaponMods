@@ -1,17 +1,18 @@
 package api
 
 import (
-    //"TarkovWeaponMods/models/weaponPartsAndMods/functionalMods"
-    //"TarkovWeaponMods/models/weaponPartsAndMods/gearMods"
-    //"TarkovWeaponMods/models/weaponPartsAndMods/vitalParts"
-  orm "TarkovWeaponMods/orm"
-  "github.com/gin-gonic/gin"
-  "net/http"
+    "fmt"
+    orm "TarkovWeaponMods/orm"
+    "github.com/gin-gonic/gin"
+    "net/http"
+    mods "TarkovWeaponMods/models/weaponPartsAndMods"
+    //models "TarkovWeaponMods/models"
 )
 
 func getForegrips(c *gin.Context) {
-    //db := orm.ConnectDB()
-    orm.ConnectDB()
+    db := orm.ConnectDB()
+    
+    fmt.Println(db) 
     
     c.JSON(http.StatusOK, gin.H{
         "message": "getForegrips",
@@ -19,15 +20,26 @@ func getForegrips(c *gin.Context) {
 }
 
 func getForegripById(c *gin.Context) {
+    //id := c.Param("id")
+
     c.JSON(http.StatusOK, gin.H{
         "message": "getForegripById",
     })
 }
 
 func postForegrip(c *gin.Context) {
-    c.JSON(http.StatusOK, gin.H{
-        "message": "postForegrip",
-    })
+
+    var foregrip mods.Foregrip
+    if err := c.BindJSON(&foregrip); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+    fmt.Println(foregrip)
+    
+    db := orm.ConnectDB()
+    db.Create(&foregrip)
+
+    c.JSON(http.StatusCreated, foregrip)
 }
 
 func putForegripById(c *gin.Context) {

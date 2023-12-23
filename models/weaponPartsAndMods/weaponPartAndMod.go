@@ -5,7 +5,8 @@ import (
 )
 
 type WeaponPartAndMod struct {
-    Item models.Item
+    models.Item
+    Category string // Vital Part, Functional Mod, etc TODO: struct?
     Manufacturer        string
     SizeChangeDirection string
     SizeChangeMagnitude int16

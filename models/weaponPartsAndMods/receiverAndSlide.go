@@ -1,13 +1,7 @@
-package vitalParts
+package weaponPartsAndMods
 
 import (
     "gorm.io/gorm"
-
-    "TarkovWeaponMods/models"
-    "TarkovWeaponMods/models/weaponPartsAndMods"
-    "TarkovWeaponMods/models/weaponPartsAndMods/functionalMods"
-    "TarkovWeaponMods/models/weaponPartsAndMods/gearMods"
-    "TarkovWeaponMods/models/weaponPartsAndMods/vitalParts"
 )
 
 type RecieverAndSlide struct {
@@ -17,7 +11,7 @@ type RecieverAndSlide struct {
 
     // Parts
     Tacticals []Tactical
-    Mounts []Mounts
+    Mounts []Mount
 
     Handguard Handguard
     FrontSight FrontSight

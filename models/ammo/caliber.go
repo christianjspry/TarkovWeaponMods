@@ -1,4 +1,4 @@
-package models
+package ammo
 
 import "gorm.io/gorm"
 

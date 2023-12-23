@@ -1,18 +1,13 @@
-package gearMods
+package weaponPartsAndMods
 
 import (
     "gorm.io/gorm"
-
-    "TarkovWeaponMods/models/weaponPartsAndMods"
-    "TarkovWeaponMods/models/weaponPartsAndMods/functionalMods"
-    "TarkovWeaponMods/models/weaponPartsAndMods/gearMods"
-    "TarkovWeaponMods/models/weaponPartsAndMods/vitalParts"
 )
 
 type Magazine struct {
     gorm.Model
     MagazineID uint    `gorm:"primaryKey"`
-    GearModPart GearModPart
+    WeaponPartAndMod WeaponPartAndMod
     MaxCount int
     CheckSpeedModifier float32
     FailureToFeedChance string

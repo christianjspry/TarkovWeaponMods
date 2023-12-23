@@ -1,13 +1,11 @@
 package models
 
-import (
-    //
-)
+//import ()
 
 // Fields each item will have
 type Item struct {
     Name string
-    Weight string
+    Weight float32
     Description string
 
     GridHeight int16
