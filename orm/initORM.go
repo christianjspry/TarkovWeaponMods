@@ -4,7 +4,6 @@ import (
     "fmt"
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
-    models "TarkovWeaponMods/models"
 )
 
 const (
@@ -17,8 +16,7 @@ const (
     TIME_ZONE =      "America/New_York" // Doubt this will change 
 )
 
-//func init_orm() *gorm.DB {
-func InitORM() {
+func ConnectDB() (db *gorm.DB) {
     dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s TimeZone=%s",
         HOST,
         DB_USER,
@@ -28,20 +26,12 @@ func InitORM() {
         SSL_MODE,
         TIME_ZONE,
     )
-    db, _ := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-
-
-    db.AutoMigrate(&models.TypeOfFire{})
-
-    db.Create(&models.TypeOfFire{
-        SingleFire: true,
-        FullAuto: false,
-        BurstFire: false,
-    })
-
-    typeOfFire := models.TypeOfFire{}
-
-    db.First(&typeOfFire, 1)
-
-    //return db
+    db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+    //db
+    if err != nil {
+        panic(err)
+    }
+    
+    //db.AutoMigrate(&models.TypeOfFire{})
+    return
 }

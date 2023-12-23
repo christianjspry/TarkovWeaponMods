@@ -2,13 +2,13 @@ package main
 
 import (
   "fmt"
-  orm "TarkovWeaponMods/orm"
+  //orm "TarkovWeaponMods/orm"
   api "TarkovWeaponMods/api"
   //models "TarkovWeaponMods/models"
 )
 
 func main() {
     fmt.Println("Beep, boop. API started.")
-    orm.InitORM()
+    //orm.InitORM()
     api.InitAPI()
 }
